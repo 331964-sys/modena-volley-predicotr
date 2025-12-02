@@ -13,7 +13,7 @@ sulla base di alcune caratteristiche tecniche dell'azione.
 
 ## Come eseguirla in locale
 
-1. Crea e attiva un ambiente virtuale (opzionale ma consigliato):
+1. Crea e attiva un ambiente virtuale:
 
    ```bash
    python -m venv .venv
