@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Modena Volley – Predizione Attacco</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="bg-layer"></div>
+
+<header class="top-bar">
+    <div class="logo-area">
+        <img class="modena-logo"
+            src="{{ url_for('static', filename='modena.webp') }}"
+            alt="Logo">
+
+
+        <div class="logo-circle">
+            🏐
+        </div>
+        
+        <div class="logo-text">
+            <span class="logo-main">Modena Volley</span>
+            <span class="logo-sub">Attack Predictor</span>
+        </div>
+        
+    </div>
+</header>
+
+<main class="main-wrapper">
+    <section class="content-card">
+        <div class="card-left">
+            <h1>Predizione Attacco</h1>
+            <p class="subtitle">
+                Inserisci le informazioni sull'azione d’attacco e il modello
+                ti restituirà la probabilità che diventi <strong>punto</strong>.
+            </p>
+
+            <form method="POST" class="form-grid">
+
+                <div class="field">
+                    <label>Set</label>
+                    <input type="number" name="SetNumber" min="1" max="5" required>
+                </div>
+
+                <div class="field">
+                    <label>Fase del set</label>
+                    <select name="ActionPhase" required>
+                        <option value="iniziale">Iniziale</option>
+                        <option value="media">Media</option>
+                        <option value="finale">Finale</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Posizione del palleggiatore</label>
+                    <input type="number" name="Modena_SetterZone" min="1" max="6" required>
+                </div>
+
+                <div class="field">
+                    <label>Tipo di palla (BallType)</label>
+                    <select name="BallType" required>
+                        <option value="T">T</option>
+                        <option value="Q">Q</option>
+                        <option value="X">X</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Combinazione (es: X5, X6, X7)</label>
+                    <input type="text" name="Combination" placeholder="X5, X6, X7..." required>
+                </div>
+
+                <div class="field">
+                    <label>Zona d'attacco (AZone)</label>
+                    <input type="text" name="AZone" placeholder="2, 3, 4, 5..." required>
+                </div>
+
+                <div class="field">
+                    <label>Zona di arrivo (BZone)</label>
+                    <input type="text" name="BZone" placeholder="1, 5, 6, 7, 9..." required>
+                </div>
+
+                <div class="field full-width">
+                    <button type="submit">Calcola predizione</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-right">
+            <div class="volley-hero">
+                <div class="volley-ball">🏐</div>
+                <h2>Analisi Modena Volley</h2>
+                <p>
+                    Il modello è addestrato sui dati degli attacchi
+                    e restituisce una stima della probabilità di punto in
+                    base a set, zona, combinazione e tipo di palla.
+                </p>
+
+                <ul class="info-list">
+                    <li>🎯 <strong>Input tecnici</strong>: Set, zone, combinazione, tipo di palla.</li>
+                    <li>📊 <strong>Output</strong>: punto / non punto + probabilità.</li>
+                    <li>💛💙 <strong>Focus</strong>: solo azioni di Modena Volley.</li>
+                </ul>
+
+                {% if prediction %}
+                <div class="result-card">
+                    <span class="result-label">Risultato stimato</span>
+                    <span class="result-value">{{ prediction }}</span>
+                    <span class="result-prob">Probabilità di punto: <strong>{{ prob }}%</strong></span>
+                </div>
+                {% else %}
+                <div class="result-placeholder">
+                    Compila il form per vedere la probabilità di punto dell’attacco.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>Vodarici Sorin · Matricola: 191756 · UNIMORE · Machine & Deep Learning · Modena Volley 💛💙</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
