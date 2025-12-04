@@ -115,6 +115,34 @@
                     Compila il form per vedere la probabilità di punto dell’attacco.
                 </div>
                 {% endif %}
+                            <div class="court-wrapper" data-current-bzone="{{ bzone or '' }}">
+                <h3 class="court-title">Zona di arrivo (BZone)</h3>
+                <p class="court-subtitle">
+                    Il riquadro verde indica la zona di arrivo dell'attacco (BZone).
+                </p>
+
+                <div class="court">
+                    <!-- Riga posteriore: 7 8 9 -->
+                    <div class="court-row">
+                        <div class="court-cell" data-zone="7">7</div>
+                        <div class="court-cell" data-zone="8">8</div>
+                        <div class="court-cell" data-zone="9">9</div>
+                    </div>
+                    <!-- Riga centrale: 4 5 6 -->
+                    <div class="court-row">
+                        <div class="court-cell" data-zone="4">4</div>
+                        <div class="court-cell" data-zone="5">5</div>
+                        <div class="court-cell" data-zone="6">6</div>
+                    </div>
+                    <!-- Riga anteriore: 1 2 3 -->
+                    <div class="court-row">
+                        <div class="court-cell" data-zone="1">1</div>
+                        <div class="court-cell" data-zone="2">2</div>
+                        <div class="court-cell" data-zone="3">3</div>
+                    </div>
+                </div>
+            </div>
+
             </div>
         </div>
     </section>

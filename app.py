@@ -24,6 +24,7 @@ FEATURES = [
 def index():
     prediction = None
     prob = None
+    bzone = None
 
     if request.method == "POST":
         # Raccolgo i valori dal form HTML
@@ -36,6 +37,9 @@ def index():
         data["AZone"] = request.form.get("AZone")
         data["BZone"] = request.form.get("BZone")
 
+        # Salviamo il campo
+        bzone = data["BZone"]
+
         # Creo un DataFrame da inviare al modello
         df_input = pd.DataFrame([data], columns=FEATURES)
 
@@ -46,11 +50,12 @@ def index():
         prediction = "PUNTO" if pred_point == 1 else "NON PUNTO"
         prob = round(prob_point * 100, 1)
 
-    return render_template("index.html", prediction=prediction, prob=prob)
+    return render_template("index.html", prediction=prediction, prob=prob, bzone=bzone)
 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 
 
-								
+
+

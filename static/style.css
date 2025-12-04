@@ -365,3 +365,88 @@ button:active {
         font-size: 16px;
     }
 }
+
+
+/* ==== VOLLEY COURT MAP ==== */
+
+.court-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-top: 16px;
+    padding: 10px 12px 12px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.court-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.court-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.court {
+    width: 100%;
+    aspect-ratio: 2 / 1; /* campo largo */
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--modena-yellow);
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+        to right,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.98)
+    );
+}
+
+.court-row {
+    flex: 1;
+    display: flex;
+}
+
+.court-cell {
+    flex: 1;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    position: relative;
+    transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+/* linee di metà campo */
+.court-row:nth-child(2) .court-cell {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.court-cell::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 6px;
+    border: 1px dashed rgba(148, 163, 184, 0.25);
+}
+
+/* stato attivo (zona selezionata) */
+.court-cell.active {
+    background: radial-gradient(circle at 30% 20%, #bbf7d0, #16a34a);
+    color: #022c22;
+    font-weight: 700;
+    box-shadow:
+        0 0 0 1px rgba(22, 163, 74, 0.9),
+        0 0 22px rgba(22, 163, 74, 0.8);
+    transform: scale(1.02);
+}
+
+.court-cell.active::after {
+    border-color: rgba(255, 255, 255, 0.5);
+}
